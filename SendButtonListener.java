@@ -16,22 +16,15 @@ public class SendButtonListener implements ActionListener {
 	SendButtonListener(JTextArea out, SocketChannel ch){
 		outgoing = out;
 		sockChannel = ch;
-
 	}
 	
 	public void actionPerformed(ActionEvent ev){
 		try{
 			String str = outgoing.getText();
 			byte[] bytes = str.getBytes();
-			//char[] buf = str.toCharArray();
-		    //byte[] bytes = new byte[buf.length << 1];
-		    //CharBuffer cBuffer = ByteBuffer.wrap(bytes).asCharBuffer();
-		    //for(int i = 0; i < buf.length; i++)
-		        //cBuffer.put(buf[i]);
-		    
-			//byte[] bytes = str.getBytes();
-			// создание заголовка для отличия пустых сообщений 
-			// и состояния разъединения
+
+			// создание заголовка для отличия пустых сообщений, 
+			// состояния разъединения, и команд серверу
 			String s = "bg";
 			byte[] byteAr = s.getBytes();
 			ByteBuffer header = ByteBuffer.wrap(byteAr);

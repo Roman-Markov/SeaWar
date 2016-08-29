@@ -24,6 +24,7 @@ public class MainWindow {
 	SocketChannel sockChannel;
 	JTextArea incoming;
 	JTextArea outgoing;
+	String gamerName;
 
 	public void go() throws IOException{
 		sockChannel = SocketChannel.open();
@@ -66,6 +67,10 @@ public class MainWindow {
 		mainFrame.getContentPane().add(BorderLayout.EAST, chatPanel);
 		mainFrame.getContentPane().add(BorderLayout.NORTH, menuPanel);
 		mainFrame.setVisible(true);
+		
+		gamerName = "Anonymous";
+		StartDialog dialog = new StartDialog(mainFrame, gamerName);
+		dialog.setVisible(true);
 
 		Selector selector = Selector.open();
 		sockChannel.register(selector, SelectionKey.OP_READ);
